@@ -1,3 +1,4 @@
+"use strict";
 import { useEffect } from 'react';
 import '../styles/globals.css';
 
@@ -16,7 +17,13 @@ function MyApp({ Component, pageProps }) {
     localStorage.setItem('dark-mode', isDarkMode.toString());
   };
 
-  return <Component {...pageProps} />;
+  return (
+    <div>
+      <button onClick={() => window.location.reload()}>Refresh</button>
+      <button onClick={toggleDarkMode}>Toggle Dark Mode</button> 
+      <Component {...pageProps} />
+    </div>
+  );
 }
 
 export default MyApp;

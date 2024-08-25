@@ -1,5 +1,5 @@
 // src/pages/_document.tsx
-
+"use strict";
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
 class MyDocument extends Document {

@@ -1,9 +1,19 @@
+"use strict";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+interface Country {
+  cca3: string;
+  name: { common: string };
+  flags: { png: string };
+  population: number;
+  region: string;
+  capital: string;
+}
+
 const HomePage = () => {
-  const [countries, setCountries] = useState<any[]>([]);
-  const [filteredCountries, setFilteredCountries] = useState<any[]>([]);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [region, setRegion] = useState<string>('');
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -74,11 +84,11 @@ const HomePage = () => {
             <option value="Oceania">Janubiy Amerika</option>
           </select>
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {filteredCountries.map(country => (
             <Link legacyBehavior key={country.cca3} href={`/country/${country.cca3}`}>
               <a className="block border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-                <img src={country.flags.png} alt={country.name.common} className="w-full h-48 object-cover" />
+                <img src={country.flags.png} alt={country.name.common} className="w-full h-48 object-cover" style={{ borderRadius: "5px", marginBottom: "10px" }} />
                 <div className="p-4">
                   <h2 className="text-lg font-semibold">{country.name.common}</h2>
                   <p>Population: {country.population.toLocaleString()}</p>
