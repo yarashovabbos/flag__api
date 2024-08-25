@@ -18,9 +18,11 @@ function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <div>
-      <button onClick={() => window.location.reload()}>Refresh</button>
-      <button onClick={toggleDarkMode}>Toggle Dark Mode</button> 
+    <div className=''>
+        <div style={{display:"flex",backgroundColor:"black", paddingTop:"40px",paddingBottom:"40px",width:"100%"}}>
+            <button className='' style={{border:"1px solid#fff",borderRadius:"30px",padding:"20px", marginTop:"10px"}} onClick={() => window.location.reload()}>Refresh</button>
+        <button style={{marginLeft:"1550px",border:"1px solid#fff",borderRadius:"30px",padding:"20px"}} onClick={toggleDarkMode}>Toggle Dark Mode</button> </div>
+      
       <Component {...pageProps} />
     </div>
   );
